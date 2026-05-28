@@ -132,18 +132,24 @@
         </nav>
     </header>
 
-    <div class="fixed inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-10">
+    <div class="fixed inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-10 p-4">
         <div id="central-glow" class="absolute w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] scale-0">
         </div>
-        <div id="hero-title" class="relative text-center">
-            <h1 class="text-[14vw] font-black tracking-tighter leading-none uppercase flex">
+
+        <div id="hero-title"
+            class="relative text-center w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <h1
+                class="text-[14vw] md:text-[10vw] font-black tracking-tighter leading-none uppercase flex flex-col sm:flex-row items-center justify-center">
                 <span class="inline-block blur-layer"
                     style="--blur-amount: 0px; --opacity-amount: 1; --scale-amount: 1; --x-move: 0px; --y-move: 0px">HUGO</span>
-                <span class="inline-block blur-layer text-blue-500 ml-[2vw]"
+                <span class="inline-block blur-layer text-blue-500 mt-2 sm:mt-0 sm:ml-[2vw]"
                     style="--blur-amount: 0px; --opacity-amount: 1; --scale-amount: 1; --x-move: 0px; --y-move: 0px">DAVY</span>
             </h1>
-            <p class="blur-layer text-zinc-500 tracking-[0.4em] uppercase text-sm mt-4">Etudiant en BUT informatique à
-                l'IUT de Lannion</p>
+
+            <p
+                class="blur-layer text-zinc-500 tracking-[0.2em] sm:tracking-[0.4em] uppercase text-[11px] sm:text-sm mt-6 max-w-xs sm:max-w-none px-4">
+                Etudiant en BUT informatique à l'IUT de Lannion
+            </p>
         </div>
     </div>
 
