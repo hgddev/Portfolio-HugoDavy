@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet | Créationo d'un jeu vidéo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0c0c0e;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.015);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+    </style>
+</head>
+
+<body class="text-zinc-200 overflow-x-hidden">
+
+    <a href="index.html"
+        class="fixed top-8 left-8 z-50 flex items-center gap-3 px-4 py-2 bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-full hover:bg-blue-600 transition-all group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span class="text-[10px] font-black uppercase tracking-widest">Retour</span>
+    </a>
+
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-20 hero-gradient">
+        <div class="text-center px-10">
+            <span class="text-blue-500 font-mono text-xs tracking-[0.5em] uppercase mb-4 block">Projet Création du jeu
+                SOKOBAN</span>
+            <h1 class="text-6xl md:text-8xl font-black italic text-white uppercase tracking-tighter">
+                Jeu <br> <span class="text-blue-500">SOKOBAN</span>
+            </h1>
+        </div>
+
+        <div class="mt-20 w-full max-w-6xl px-6 reveal">
+            <div class="glass-card rounded-[3rem] overflow-hidden p-2">
+                <img src="assets/img/SOKOBAN_grille_de_jeu.png" alt="Full Preview"
+                    class="w-full rounded-[2.5rem] object-cover aspect-video opacity-80">
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-10 py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-20">
+
+            <div class="space-y-12">
+                <div class="reveal">
+                    <h3 class="text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Objectif</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed font-light">
+                        Concevoir et réaliser un jeu vidéo de type Sokoban dans le terminal, .
+                    </p>
+                </div>
+
+                <div class="reveal">
+                    <h3 class="text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Technologies
+                        utilisées</h3>
+                    <ul class="flex flex-wrap gap-2">
+                        <li class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-bold">C</li>
+                        <li class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-bold">VS Code
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal pt-8">
+                    <a href="https://github.com/hgddev/Jeu-Sokoban-terminal-de-commandes-.git" target="_blank"
+                        class="inline-block w-full text-center py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+                        Voir le code source
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-16">
+                <div class="reveal">
+                    <h2 class="text-3xl font-bold italic mb-6">À propos du projet</h2>
+                    <p class="text-zinc-500 leading-relaxed mb-6">
+                        Ce projet portait sur le développement du jeu Sokoban, j'ai programmé ce jeu en langage C et
+                        fait en sorte qu'il soit jouable directement dans le terminal. L'enjeu principal était de gérer
+                        la logique algorithmique du jeu et la détection des collisions avec les murs et les caisses.
+                    </p>
+                    <p class="text-zinc-500 leading-relaxed">
+                        Le but principal était de programmer les déplacement du joueur, la logique de déplacement des
+                        caisses ainsi que la détéction de victoire du joueur.
+                    </p>
+                    <p class="text-zinc-500 leading-relaxed">
+                        <br>
+                        Ce projet m'a appris à gérer des entrées/sorties depuis des fichiers, à manipuler des tableaux
+                        en 2D ainsi qu'à comprendre toute la logique du jeu.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass-card p-8 rounded-3xl reveal">
+                        <div class="text-blue-600 mb-4 font-black">01.</div>
+                        <h4 class="text-white font-bold mb-2">Algorithmique & Logique</h4>
+                        <p class="text-xs text-zinc-500 leading-relaxed">Gestion des collisions, des conditions de
+                            victoire et déplacement dynamique des éléments dans une matrice.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl reveal">
+                        <div class="text-blue-600 mb-4 font-black">02.</div>
+                        <h4 class="text-white font-bold mb-2">Gestion Mémoire</h4>
+                        <p class="text-xs text-zinc-500 leading-relaxed">Manipulation de tableaux bidimensionnels en C
+                            et optimisation du rafraîchissement de l'affichage dans le terminal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <p class="text-[9px] font-bold uppercase tracking-[0.6em] text-zinc-600">
+            Projet BUT 1 LANNION — Hugo Davy — 2026
+        </p>
+    </footer>
+
+    <script>
+        // Logique de reveal au scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
