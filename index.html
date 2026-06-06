@@ -70,6 +70,23 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                /* Décale de la moitié exacte de la largeur totale du conteneur */
+                transform: translateX(calc(-50% - 12px));
+            }
+        }
+
+        .animate-marquee {
+            /* Le défilement est linéaire et infini. Ajuste '25s' pour modifier la vitesse */
+            animation: marquee 25s linear infinite;
+        }
     </style>
 </head>
 
@@ -77,21 +94,7 @@
 
     <canvas id="particle-canvas"></canvas>
 
-    <div id="loader"
-        class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-950 transition-opacity duration-[1500ms]">
-        <div class="absolute w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-pulse"></div>
-        <div class="relative h-16 w-16 mb-8">
-            <div class="absolute inset-0 rounded-full border-2 border-white/5"></div>
-            <div class="absolute inset-0 rounded-full border-2 border-t-blue-400 animate-spin"></div>
-        </div>
-        <h2
-            class="text-sm font-black tracking-[0.3em] uppercase text-white border border-white/20 px-6 py-2 rounded-2xl bg-white/5 backdrop-blur-xl">
-            HUGO <span class="text-blue-400">DAVY</span>
-        </h2>
-        <div class="mt-10 h-[1px] w-40 bg-white/10 overflow-hidden">
-            <div id="loader-bar" class="h-full bg-blue-400 w-0 transition-all duration-[3000ms] ease-in-out"></div>
-        </div>
-    </div>
+
 
     <header class="relative z-50">
         <nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50">
@@ -151,7 +154,7 @@
             </h1>
 
             <p
-                class="blur-layer text-zinc-500 tracking-[0.2em] sm:tracking-[0.4em] uppercase text-[11px] sm:text-sm mt-6 max-w-xs sm:max-w-none px-4">
+                class="blur-layer text-zinc-300 tracking-[0.2em] sm:tracking-[0.4em] uppercase text-[11px] sm:text-sm mt-6 max-w-xs sm:max-w-none px-4">
                 Etudiant en BUT informatique à l'IUT de Lannion
             </p>
         </div>
@@ -160,397 +163,464 @@
     <main class="relative z-20 pt-[100vh]">
 
 
-        <section class="max-w-7xl mx-auto px-10 py-32 space-y-24">
+        <section class="w-full bg-blue-600/20 backdrop-blur-md py-24 border-b border-white/[0.05] relative z-20">
+            <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16">
 
-            <div
-                class="reveal grid grid-cols-1 lg:grid-cols-3 gap-12 items-start bg-blue-600/10 p-10 rounded-3xl glass-card">
-                <div>
-                    <span class="text-blue-500 font-mono text-2xs tracking-[0.4em] uppercase block mb-3">Qui suis-je
+                <div class="reveal mb-16 w-full">
+                    <span class="text-blue-500 font-mono text-2xs tracking-[0.4em] uppercase block mb-4">Qui suis-je
                         ?</span>
-                    <h2 class="text-4xl md:text-5xl font-black italic text-white uppercase tracking-tight leading-none">
-                        Profil &<br><span class="text-blue-500">Passions</span>
+                    <h2
+                        class="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tight leading-none mb-8">
+                        Profil & <span class="text-blue-500">Passions</span>
                     </h2>
+                    <div class="space-y-6 text-white font-light leading-relaxed text-base md:text-lg">
+                        <p>
+                            Passionné par l'informatique et le développement depuis mon parcours en <strong
+                                class="text-white font-medium">Bac STI2D spécialité SIN (Systèmes d'Information et
+                                Numérique)</strong>, j'apprécie particulièrement l'aspect pratique et la résolution de
+                            problèmes concrets. C'est cette envie constante de concevoir et de manipuler qui m'a
+                            naturellement orienté vers un <strong class="text-white font-medium">BUT
+                                Informatique</strong> à l'IUT de Lannion.
+                        </p>
+                        <p>
+                            Parallèlement à mes études, je pratique le <strong class="text-white font-medium">cyclisme
+                                sur route en compétition</strong>. Cette discipline m'a apporté une grande <strong
+                                class="text-white font-medium">rigueur</strong>, la gestion de l'effort et une <strong
+                                class="text-white font-medium">persévérance</strong> à toute épreuve, des qualités
+                            précieuses pour mener à bien des projets numériques complexes sans jamais me décourager.
+                        </p>
+                    </div>
                 </div>
-                <div class="lg:col-span-2 space-y-6 text-zinc-400 font-light leading-relaxed text-base">
-                    <p class="text-2xs">
-                        Passionné par l'informatique et le développement depuis mon parcours en <strong
-                            class="text-white font-medium">Bac STI2D spécialité SIN (Systèmes d'Information et
-                            Numérique)</strong>, J'apprécie particulièrement l'aspect pratique et la résolution de
-                        problèmes concrets. C'est cette envie constante de concevoir et de manipuler qui
-                        m'a naturellement orienté vers un <strong class="text-white font-medium">BUT
-                            Informatique</strong>.
-                    </p>
-                    <p class="text-2xs">
-                        Au cours de mon cursus à l'IUT de Lannion, j'apprends à structurer des algorithmes complexes, à
-                        modéliser des bases de données et à collaborer en équipe sur des architectures logicielles
-                        complètes. Curieux et rigoureux, j'aime explorer de nouvelles manières de rendre le code à la
-                        fois performant et élégant.
-                    </p>
-                    <p class="text-2xs">
-                        Parrallèlement à mes études, je pratique le <strong class="text-white font-medium">cyclisme sur
-                            route en compétition</strong>. Cette discipline à pu m'apprendre la <strong
-                            class="text-white font-medium">rigueur</strong>, notamment lors des multiples entrainements,
-                        mais également la gestion de l'éffort et la <strong
-                            class="text-white font-medium">persevérance</strong>. Ces qualités me sont très utiles dans
-                        mon parcours, en effet, elles me permettent d'avoir un <strong
-                            class="text-white font-medium">point de vue différent</strong> sur les projets mais
-                        également de <strong class="text-white font-medium">ne pas me décourager</strong> face aux
-                        difficultés que je peux rencontrer.
-                    </p>
+
+                <div class="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 auto-rows-[280px]">
+
+                    <div
+                        class="md:col-span-2 md:row-span-2 group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/IMG_CHAINE.png" alt="Chaîne de vélo / Cyclisme"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="md:col-span-2 group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/CAVALIER.png" alt="Projet Cavalier"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/FOND_BDD.png" alt="Base de données"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/IMG_CAVALIER.png" alt="Interface Cavalier"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/SOKOBAN_grille_de_jeu.png" alt="Jeu Sokoban"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="md:col-span-2 group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/IMG_SITE_WEB.png" alt="Aperçu Site Web"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
+                    <div class="group overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900">
+                        <img src="assets/img/PICROSS.png" alt="Projet Picross"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+
                 </div>
+
             </div>
-
-            <div class="reveal space-y-12 relative p-8 md:p-12 rounded-[2.5rem] border border-white/[0.05] overflow-hidden"
-                style="background: radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.04) 0%, transparent 90%);"
-                class="bg-zinc-950">
-
-                <div
-                    class="absolute -left-20 top-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none">
-                </div>
-                <div
-                    class="absolute -right-20 bottom-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[130px] pointer-events-none">
-                </div>
-
-                <div class="absolute inset-0 opacity-[0.02] pointer-events-none"
-                    style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;">
-                </div>
-
-                <div class="relative z-10">
-                    <span class="text-blue-500 font-mono text-2xs tracking-[0.4em] uppercase block mb-3">Mon
-                        Parcours</span>
-                    <h2 class="text-4xl md:text-5xl font-black italic text-white uppercase tracking-tight">
-                        Formation
-                    </h2>
-                </div>
-
-                <div
-                    class="relative border-l border-zinc-800 group/line ml-4 md:ml-6 space-y-12 py-4 z-10 hover:border-blue-500/30 transition-colors duration-500">
-
-                    <div class="relative pl-8 md:pl-10 group">
-                        <div
-                            class="absolute -left-[9px] top-1.5 w-4 h-4 bg-[#0c0c0e] border-2 border-blue-500 rounded-full group-hover:bg-blue-500 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.5)]">
-                        </div>
-
-                        <div
-                            class="glass-card p-6 rounded-2xl border-white/5 group-hover:border-blue-500/30 group-hover:bg-blue-950/[0.03] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] transition-all duration-500">
-                            <span class="text-blue-400 font-mono text-xs font-bold tracking-wider">2025 - Présent</span>
-                            <h3 class="text-xl font-bold text-white mt-1 group-hover:text-blue-400 transition-colors">
-                                BUT Informatique</h3>
-                            <p class="text-zinc-500 text-2xs font-medium mt-0.5">IUT de Lannion — Université de Rennes
-                            </p>
-                            <p class="text-zinc-400 text-2xs font-light leading-relaxed mt-4">
-                                Cette formation est assez axée sur la pratique. On apprend les bases du développement
-                                tout comme la logique de l'algorithmie, mais également le coté data avec la base de
-                                données. Elle offre un approfondissement en développement logiciel (Java, C),
-                                architecture système
-                                (Docker, Linux), modélisation de bases de données et gestion de projets diverses.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Java</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Java
-                                    FX</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Scene
-                                    Builder</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">FIGMA</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">C</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Docker</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">PostgresSQL</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Tutorial
-                                    D</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">HTML
-                                    | CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative pl-8 md:pl-10 group">
-                        <div
-                            class="absolute -left-[9px] top-1.5 w-4 h-4 bg-[#0c0c0e] border-2 border-zinc-700 rounded-full group-hover:border-blue-400 group-hover:bg-blue-400 transition-all duration-300">
-                        </div>
-
-                        <div
-                            class="glass-card p-6 rounded-2xl border-white/5 group-hover:border-blue-500/20 group-hover:bg-blue-950/[0.02] transition-all duration-500">
-                            <span class="text-zinc-500 font-mono text-xs font-bold tracking-wider">2023 - 2025</span>
-                            <h3 class="text-xl font-bold text-white mt-1 group-hover:text-blue-400 transition-colors">
-                                Baccalauréat STI2D</h3>
-                            <p class="text-zinc-500 text-2xs font-medium mt-0.5">Spécialité Systèmes d'Information et
-                                Numérique (SIN)</p>
-                            <p class="text-zinc-400 text-2xs font-light leading-relaxed mt-4">
-                                Cette formation introduit aux concepts de la programmation, à l'électronique numérique,
-                                au traitement de l'information et à la conception de projets technologiques
-                                interconnectés. Elle permet de comprendre comment sont conçus les objets, les systèmes
-                                techniques et les infrastructures qui nous entourent, tout en intégrant les enjeux
-                                environnementaux. <br><br> Mais c'est avant tout une première révélation de mon envie
-                                d'évoluer dans le milieu de l'informatique.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">C++
-                                    (Peu)</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">SolidWorks</span>
-                                <span
-                                    class="px-2.5 py-0.5 bg-white/5 border border-white/5 text-2xs text-zinc-400 font-mono rounded transition-colors group-hover:border-blue-500/20 group-hover:text-blue-300">Gantt
-                                    Project</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <section id="competences-hub"
-                class="mx-auto px-10 py-32 space-y-16 bg-blue-600/10 glass-card rounded-[2.5rem]">
-
-                <div class="reveal">
-                    <span class="text-blue-500 font-mono text-2xs tracking-[0.4em] uppercase block mb-3">
-                        BUT INFORMATIQUE
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-black italic text-white uppercase tracking-tight leading-none">
-                        Compétences <br><span class="text-blue-500">Développées</span>
-                    </h2>
-                    <p class="text-zinc-400 text-sm font-light max-w-xl mt-4">
-                        Aperçu des blocs de compétences fondamentaux acquis tout au long de mon parcours de formation.
-                        Survolez une carte pour découvrir les projets associés.
-                    </p>
-                </div>
-
-                <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 01
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Développer des applications informatiques simples
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-                                <a href="#sitevitrine">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Site
-                                        Web Vitrine</span></a>
-                                <a href="#sokoban">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Jeu
-                                        SOKOBAN</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 02
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Appréhender et construire des algorithmes
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-                                <a href="#sokoban">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[11px] text-blue-300 rounded-md">Jeu
-                                        SOKOBAN</span></a>
-
-                                <a href="#algorithme-cavalier">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Algorithme
-                                        du Cavalier</span></a>
-                                <a href="#algorithme-picross">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Algorithme
-                                        du Picross</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 03
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Installer et configurer un poste de travail
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-
-                                <a href="#chaine-traitement-fichiers">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Chaine
-                                        de traitement de fichiers</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 04
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Concevoir et mettre en place une base de données à partir d’un cahier des charges client
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-                                <a href="#base-donnees-fournisseur">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Base
-                                        de données fournisseur d'éléctricité</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 05
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Identifier les besoins métiers des clients et des utilisateurs
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-                                <a href="#base-donnees-fournisseur">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Base
-                                        de données fournisseur d'éléctricité</span>
-                                </a>
-                                <a href="#chaine-traitement-fichiers">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Chaine
-                                        de traitement de fichiers</span>
-                                </a>
-                                <a href="#sitevitrine">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Site
-                                        web vitrine</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div
-                        class="glass-card p-8 rounded-3xl border border-white/5 bg-white/[0.01] flex flex-col justify-between min-h-[14rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.02]">
-                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-
-                        <div class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
-                            <div class="text-blue-500 font-mono text-xs font-bold tracking-widest mb-4">COMPÉTENCE 06
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-zinc-200 leading-snug group-hover:text-blue-400 transition-colors duration-500">
-                                Identifier ses aptitudes pour travailler dans une équipe
-                            </h3>
-                        </div>
-
-                        <div
-                            class="mt-6 pt-4 border-t border-white/5 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
-                            <span
-                                class="text-zinc-500 font-mono text-[12px] uppercase tracking-widest block mb-2">Projets
-                                associés :</span>
-                            <div class="flex flex-wrap gap-2">
-                                <a href="#base-donnees-fournisseur">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Base
-                                        de données fournisseur d'éléctricité</span>
-                                </a>
-                                <a href="#sitevitrine">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Site
-                                        Web Vitrine</span>
-                                </a>
-                                <a href="#sokoban">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Jeu
-                                        SOKOBAN</span>
-                                </a>
-                                <a href="#algorithme-cavalier">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Algorithme
-                                        du Cavalier</span>
-                                </a>
-                                <a href="#algorithme-picross">
-                                    <span
-                                        class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 text-[12px] text-blue-300 rounded-md">Algorithme
-                                        du Picross</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
         </section>
 
 
 
 
 
+        <section class="w-full relative py-24 bg-blue-300/30 backdrop-blur-[4px]">
+
+            <div
+                class="absolute left-10 top-20 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[160px] pointer-events-none">
+            </div>
+            <div
+                class="absolute right-10 bottom-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none">
+            </div>
+
+            <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+
+                <div class="reveal mb-20 w-full">
+                    <span class="text-white font-mono text-5xs tracking-[0.4em] uppercase block mb-4">Mon
+                        Parcours</span>
+                    <h2 class="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tight leading-none">
+                        Formation</h2>
+                </div>
+
+                <div class="reveal relative w-full mt-12 overflow-hidden">
+
+                    <div
+                        class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-blue-500 via-slate-400 to-transparent -translate-x-1/2 hidden md:block">
+                    </div>
+
+                    <div class="space-y-16 md:space-y-24 relative">
+
+                        <div class="flex flex-col md:flex-row items-stretch w-full">
+                            <div class="w-full md:w-1/2 md:pr-16 relative pl-10 md:pl-0">
+                                <div
+                                    class="absolute right-0 top-8 w-4 h-4 bg-slate-900 border-2 border-blue-500 rounded-full translate-x-1/2 z-20 shadow-[0_0_15px_rgba(59,130,246,0.6)] hidden md:block">
+                                </div>
+                                <div
+                                    class="absolute left-4 top-8 w-4 h-4 bg-slate-900 border-2 border-blue-500 rounded-full -translate-x-1/2 z-20 md:hidden shadow-[0_0_15px_rgba(59,130,246,0.6)]">
+                                </div>
+
+                                <div
+                                    class="bg-slate-950 border border-blue-500/30 p-8 rounded-3xl md:text-right">
+                                    <span
+                                        class="inline-block text-blue-400 font-mono text-xs font-bold tracking-wider bg-blue-500/10 px-3 py-1 rounded-full mb-3">2025
+                                        - Présent</span>
+                                    <h3 class="text-2xl font-bold text-blue-400">BUT Informatique</h3>
+                                    <p class="text-white text-xs font-medium mt-1">IUT de Lannion — Université de Rennes
+                                    </p>
+
+                                    <p
+                                        class="text-white text-sm font-light leading-relaxed mt-5 md:max-w-xl md:ml-auto">
+                                        Cette formation est assez axée sur la pratique. On apprend les bases du
+                                        développement tout comme la logique de l'algorithmie, mais également le coté
+                                        data avec la base de données. Elle offre un approfondissement en développement
+                                        logiciel (Java, C), architecture système (Docker, Linux), modélisation de bases
+                                        de données et gestion de projets diverses.
+                                    </p>
+                                    <br>
+
+                                    <div class="mt-12 gap-6 flex md:justify-end">
+                                        <a href="https://iut-lannion.univ-rennes.fr/" target="_blank"
+                                            class="inline-flex items-center gap-4 group">
+                                            <span
+                                                class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">IUT
+                                                LANNION</span>
+                                            <div
+                                                class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
+                                            </div>
+                                        </a>
+                                        <a href="assets/PDF/annexe-2-licence-professionnelle-bachelor-universitaire-de-technologie-informatique-29016.pdf"
+                                            target="_blank" class="inline-flex items-center gap-4 group">
+                                            <span
+                                                class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">PROGRAMME
+                                                NATIONAL BUT INFORMATIQUE</span>
+                                            <div
+                                                class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <br>
+
+                                    <div class="flex flex-wrap gap-2 mt-6 md:justify-end">
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">Java</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">Java
+                                            FX</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">Scene
+                                            Builder</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">FIGMA</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">C</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">Docker</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">PostgreSQL</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">Tutorial
+                                            D</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-2xs text-blue-300 font-mono rounded-lg">HTML
+                                            | CSS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 hidden md:block"></div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-stretch w-full">
+                            <div class="w-full md:w-1/2 hidden md:block"></div>
+
+                            <div class="w-full md:w-1/2 md:pl-16 relative pl-10 md:pl-0">
+                                <div
+                                    class="absolute left-0 top-8 w-4 h-4 bg-slate-900 border-2 border-blue-400 rounded-full -translate-x-1/2 z-20 hidden md:block">
+                                </div>
+                                <div
+                                    class="absolute left-4 top-8 w-4 h-4 bg-slate-900 border-2 border-blue-400 rounded-full -translate-x-1/2 z-20 md:hidden">
+                                </div>
+
+                                <div
+                                    class="bg-slate-950  border border-blue-400/30 p-8 rounded-3xl">
+                                    <span
+                                        class="inline-block text-slate-400 font-mono text-xs font-bold tracking-wider bg-white/5 px-3 py-1 rounded-full mb-3">2023
+                                        - 2025</span>
+                                    <h3 class="text-2xl font-bold text-blue-400">Baccalauréat STI2D</h3>
+                                    <p class="text-white text-xs font-medium mt-1">Spécialité Systèmes d'Information et
+                                        Numérique (SIN)</p>
+
+                                    <p class="text-white text-sm font-light leading-relaxed mt-5 max-w-xl">
+                                        Cette formation introduit aux concepts de la programmation, à l'électronique
+                                        numérique, au traitement de l'information et à la conception de projets
+                                        technologiques interconnectés. Elle permet de comprendre comment sont conçus les
+                                        objets, les systèmes techniques et les infrastructures qui nous entourent, tout
+                                        en intégrant les enjeux environnementaux.
+                                        <br><br>
+                                        Mais c'est avant tout une première révélation de mon envie d'évoluer dans le
+                                        milieu de l'informatique.
+                                    </p>
+
+                                    <div class="flex flex-wrap gap-2 mt-6">
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/5 border border-blue-400/20 text-2xs text-blue-300 font-mono rounded-lg">C++
+                                            (Peu)</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/5 border border-blue-400/20 text-2xs text-blue-300 font-mono rounded-lg">SolidWorks</span>
+                                        <span
+                                            class="px-2.5 py-1 bg-blue-500/5 border border-blue-400/20 text-2xs text-blue-300 font-mono rounded-lg">Gantt
+                                            Project</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="competences-hub" class="w-full bg-slate-950 py-20 relative overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-12 relative z-10">
+                <div class="reveal">
+                    <span class="text-blue-400 font-mono text-2xs tracking-[0.4em] uppercase block mb-3">BUT
+                        INFORMATIQUE</span>
+                    <h2 class="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tight leading-none">
+                        Compétences <br><span class="text-blue-600">Développées</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg font-light max-w-xl gap-4 mt-6">
+                        Aperçu des compétences fondamentales acquises au cours de ma formation.
+                    </p>
+                </div>
+
+                <div class="relative px-2 sm:px-8 group/carousel">
+
+                    <button id="prev-competence"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-blue-600 hover:border-blue-400 -translate-x-2 md:-translate-x-4 cursor-pointer shadow-xl shadow-black/80">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <div class="overflow-hidden">
+                        <div id="carousel-track"
+                            class="flex transition-transform duration-500 cubic-bezier(0.25, 1, 0.5, 1) gap-6">
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-blue-500/30 bg-blue-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-blue-400 hover:bg-blue-950/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-blue-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 01</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-blue-300 transition-colors duration-500">
+                                        Développer des applications informatiques simples
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-blue-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#sitevitrine"><span
+                                                class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 text-[12px] text-blue-300 rounded-md transition-colors hover:bg-blue-500 hover:text-white">Site
+                                                Web Vitrine</span></a>
+                                        <a href="#sokoban"><span
+                                                class="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 text-[12px] text-blue-300 rounded-md transition-colors hover:bg-blue-500 hover:text-white">Jeu
+                                                SOKOBAN</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-emerald-500/30 bg-emerald-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-emerald-400 hover:bg-emerald-950/20 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-emerald-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 02</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-emerald-300 transition-colors duration-500">
+                                        Appréhender et construire des algorithmes
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-emerald-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#sokoban"><span
+                                                class="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-[11px] text-emerald-300 rounded-md transition-colors hover:bg-emerald-500 hover:text-white">Jeu
+                                                SOKOBAN</span></a>
+                                        <a href="#algorithme-cavalier"><span
+                                                class="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-[12px] text-emerald-300 rounded-md transition-colors hover:bg-emerald-500 hover:text-white">Algorithme
+                                                du Cavalier</span></a>
+                                        <a href="#algorithme-picross"><span
+                                                class="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-[12px] text-emerald-300 rounded-md transition-colors hover:bg-emerald-500 hover:text-white">Algorithme
+                                                du Picross</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-purple-500/30 bg-purple-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-purple-400 hover:bg-purple-950/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-purple-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 03</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-purple-300 transition-colors duration-500">
+                                        Installer et configurer un poste de travail
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-purple-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#chaine-traitement-fichiers"><span
+                                                class="px-2 py-0.5 bg-purple-500/10 border border-purple-500/30 text-[12px] text-purple-300 rounded-md transition-colors hover:bg-purple-500 hover:text-white">Chaine
+                                                de traitement</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-pink-500/30 bg-pink-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-pink-400 hover:bg-pink-950/20 hover:shadow-[0_0_30px_rgba(236,72,153,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-pink-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 04</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-pink-300 transition-colors duration-500">
+                                        Concevoir et mettre en place une base de données
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-pink-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#base-donnees-fournisseur"><span
+                                                class="px-2 py-0.5 bg-pink-500/10 border border-pink-500/30 text-[12px] text-pink-300 rounded-md transition-colors hover:bg-pink-500 hover:text-white">BDD
+                                                Électricité</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-amber-500/30 bg-amber-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-amber-400 hover:bg-amber-950/20 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-amber-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 05</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-amber-300 transition-colors duration-500">
+                                        Identifier les besoins métiers des clients
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-amber-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#base-donnees-fournisseur"><span
+                                                class="px-2 py-0.5 bg-amber-500/10 border border-amber-500/30 text-[12px] text-amber-300 rounded-md transition-colors hover:bg-amber-500 hover:text-white">BDD
+                                                Fournisseur</span></a>
+                                        <a href="#sitevitrine"><span
+                                                class="px-2 py-0.5 bg-amber-500/10 border border-amber-500/30 text-[12px] text-amber-300 rounded-md transition-colors hover:bg-amber-500 hover:text-white">Site
+                                                Vitrine</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="carousel-item w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 p-8 rounded-3xl border-2 border-red-500/30 bg-red-950/10 flex flex-col justify-between min-h-[17rem] h-full relative overflow-hidden group transition-all duration-500 hover:border-red-400 hover:bg-red-950/20 hover:shadow-[0_0_30px_rgba(239,68,68,0.15)]">
+                                <div
+                                    class="absolute -right-8 -bottom-8 w-32 h-32 bg-red-500/10 rounded-full blur-2xl transition-all duration-500 group-hover:scale-125">
+                                </div>
+                                <div
+                                    class="transform group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                                    <div class="text-red-400 font-mono text-xs font-bold tracking-widest mb-4">
+                                        COMPÉTENCE 06</div>
+                                    <h3
+                                        class="text-lg font-bold text-slate-100 leading-snug group-hover:text-red-300 transition-colors duration-500">
+                                        Identifier ses aptitudes pour travailler en équipe
+                                    </h3>
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-red-500/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out z-10">
+                                    <span
+                                        class="text-slate-500 font-mono text-[11px] uppercase tracking-widest block mb-2">Projets
+                                        associés :</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#sokoban"><span
+                                                class="px-2 py-0.5 bg-red-500/10 border border-red-500/30 text-[12px] text-red-300 rounded-md transition-colors hover:bg-red-500 hover:text-white">Jeu
+                                                SOKOBAN</span></a>
+                                        <a href="#sitevitrine"><span
+                                                class="px-2 py-0.5 bg-red-500/10 border border-red-500/30 text-[12px] text-red-300 rounded-md transition-colors hover:bg-red-500 hover:text-white">Site
+                                                Vitrine</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button id="next-competence"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-blue-600 hover:border-blue-400 translate-x-2 md:translate-x-4 cursor-pointer shadow-xl shadow-black/80">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
 
 
         <section id="projets"
-            class="relative bg-blue-600/20 backdrop-blur-md border-t border-b border-white/[0.03] py-20 md:py-32 my-10 md:my-20">
+            class="relative z-20 bg-blue-600/20 backdrop-blur-md border-t border-b border-white/[0.03] py-20 md:py-32 my-0">
             <div class="max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 lg:gap-20">
 
                 <div class="lg:w-1/3 lg:sticky lg:top-40 h-fit">
@@ -566,378 +636,312 @@
                     </p>
                 </div>
 
-                <div class="lg:w-2/3 space-y-[15vh] md:space-y-[30vh] pb-[10vh] md:pb-[20vh]">
+                <div class="lg:w-2/3 space-y-16 pb-[10vh]">
 
-                    <div id="sitevitrine" class="reveal-card group relative">
+                    <div id="sitevitrine" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
+
                             <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
-
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
                                 <img src="assets/img/IMG_SITE_WEB.png" alt="Aperçu site web vitrine"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Site web Vitrine
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         Thème de la page : Emirats Arabes Unis
                                     </p>
 
-                                    <div>
-                                        <a href="Sitevitrine.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Développer des applications informatiques simples
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Développer
+                                                des apps simples</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier ses aptitudes pour travailler dans une équipe
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Travail
+                                                en équipe</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="Sitevitrine.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div id="sokoban" class="reveal-card group relative">
+                    <div id="sokoban" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
+
                             <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
-
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
                                 <img src="assets/img/FOND_SOKOBAN.png" alt="Aperçu SOKOBAN"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Jeu SOKOBAN
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         Algorithmie & Terminal C
                                     </p>
 
-                                    <div>
-                                        <a href="sokoban.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Développer des applications informatiques simples
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Développer
+                                                des apps simples</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Appréhender et construire des algorithmes
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Construire
+                                                des algorithmes</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="sokoban.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div id="algorithme-cavalier" class="reveal-card group relative">
+                    <div id="algorithme-cavalier" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
+
                             <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
-
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
                                 <img src="assets/img/IMG_CAVALIER.png" alt="Aperçu Algorithme de résolutions"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Algorithme de résolution - PB du CAVALIER
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         Problème du cavalier
                                     </p>
 
-                                    <div>
-                                        <a href="Cavalier.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Appréhender et construire des algorithmes
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Construire
+                                                des algorithmes</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier ses aptitudes pour travailler dans une équipe
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Travail
+                                                en équipe</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="Cavalier.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div id="algorithme-picross" class="reveal-card group relative">
+                    <div id="algorithme-picross" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
+
                             <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
-
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
                                 <img src="assets/img/IMG_PICROSS.png" alt="Aperçu Algorithme de résolutions"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Algorithme de résolution - PICROSS
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         Jeu du Picross
                                     </p>
 
-                                    <div>
-                                        <a href="Picross.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Appréhender et construire des algorithmes
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Construire
+                                                des algorithmes</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier ses aptitudes pour travailler dans une équipe
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Travail
+                                                en équipe</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="Picross.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div id="chaine-traitement-fichiers" class="reveal-card group relative">
+                    <div id="chaine-traitement-fichiers" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
-                            <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
 
+                            <div
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
                                 <img src="assets/img/IMG_CHAINE_TRAITEMENT_FICHIERS.png"
                                     alt="Aperçu Chaîne de traitement"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Chaîne de traitement automatisée
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         Conteneurs & automatisation
                                     </p>
 
-                                    <div>
-                                        <a href="Chaine_traitement.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Installer et configurer un poste de travail
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Configurer
+                                                un poste</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier ses aptitudes pour travailler dans une équipe
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Travail
+                                                en équipe</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="Chaine_traitement.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div id="base-donnees-fournisseur" class="reveal-card group relative">
+                    <div id="base-donnees-fournisseur" class="reveal-card group">
                         <div
-                            class="glass-card rounded-[2rem] md:rounded-[3rem] overflow-hidden border-white/15 group-hover:border-blue-500/30 transition-all duration-700">
+                            class="glass-card rounded-3xl overflow-hidden border-black/10 hover:border-blue-500/30 transition-all duration-500 bg-white/80 flex flex-col">
+
                             <div
-                                class="min-h-fit md:aspect-video relative flex items-center justify-center overflow-hidden p-6 md:p-8">
+                                class="w-full aspect-video relative overflow-hidden bg-zinc-100 border-b border-black/5">
+                                <img src="assets/img/FOND_BDD.png" alt="Aperçu Base de données"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            </div>
 
-                                <img src="assets/img/FOND_BDD.png"
-                                    alt="Aperçu Base de données fournisseur d'éléctricité"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors">
-                                </div>
-
-                                <div
-                                    class="relative z-10 text-center w-full h-full flex flex-col justify-center py-6 md:py-0">
-                                    <h3
-                                        class="text-2xl md:text-4xl font-black italic text-white mb-2 drop-shadow-lg transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                            <div
+                                class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                <div class="space-y-3 flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-black italic text-zinc-900">
                                         Base de données fournisseur d'électricité
                                     </h3>
-
-                                    <p
-                                        class="text-blue-400 font-mono text-[12px] md:text-[15px] tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase transition-all duration-500 delay-75 group-hover:opacity-0 group-hover:-translate-y-4">
+                                    <p class="text-blue-600 font-mono text-xs tracking-widest font-bold uppercase">
                                         UML & Tutorial D
                                     </p>
 
-                                    <div>
-                                        <a href="BDD_elec.html">
-                                            <button
-                                                class="inline-block py-2.5 px-6 md:py-3 md:px-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                                                Voir le détail du projet
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div
-                                        class="border-t border-white/5 pt-4 mt-6 group-hover:opacity-0 group-hover:-translate-y-[-40px] transition-all duration-500 delay-75">
+                                    <div class="pt-2 border-t border-black/5">
                                         <span
-                                            class="text-zinc-500 font-mono text-sm md:text-[20px] uppercase tracking-widest block mb-3">Compétences
+                                            class="text-zinc-800 font-mono text-3xs uppercase tracking-widest block mb-2">Compétences
                                             validées :</span>
-                                        <div class="flex items-center flex-wrap gap-2 md:gap-3 justify-center">
+                                        <div class="flex flex-wrap gap-1.5">
                                             <span
-                                                class="px-2.5 py-1 bg-blue-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Concevoir et mettre en place une BDD à partir d’un cahier des charges
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Mettre
+                                                en place une BDD</span>
                                             <span
-                                                class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier les besoins métiers des clients et des utilisateurs
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Besoins
+                                                métiers</span>
                                             <span
-                                                class="px-2.5 py-1 bg-purple-500/10 border border-cyan-500/20 text-[12px] md:text-[15px] text-cyan-300 font-mono rounded-xl md:rounded-full">
-                                                Identifier ses aptitudes pour travailler dans une équipe
-                                            </span>
+                                                class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-3xs text-blue-600 font-mono rounded-md font-medium">Travail
+                                                en équipe</span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <a href="BDD_elec.html" class="block w-full text-center">
+                                        <button
+                                            class="w-full md:w-auto inline-block py-3 px-6 border border-black/10 rounded-full bg-white text-zinc-800 hover:bg-zinc-900 hover:text-white transition-all font-bold text-2xs uppercase tracking-widest shadow-sm whitespace-nowrap">
+                                            Voir le projet
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -945,124 +949,160 @@
             </div>
         </section>
 
-        <footer id="contact" class="relative z-20 mt-40 border-t border-white/5 bg-blue-600/20 backdrop-blur-md">
-            <div class="w-full">
-                <div class="max-w-[1800px] mx-auto flex flex-col lg:flex-row items-stretch">
 
-                    <div
-                        class="lg:w-[40%] p-10 md:p-20 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-between">
-                        <div>
 
-                            <h2 class="text-4xl md:text-5xl font-light italic mt-6 mb-8 text-zinc-100 leading-tight">
-                                C'est malheuresement la FIN...</span>
-                            </h2>
-                            <p class="text-zinc-500 text-[20px] font-light max-w-sm leading-relaxed">
-                                Merci d'avoir parcouru mon travail. Si mon profil correspond
-                                à vos besoins, n'hésitez pas à me contacter via ce formulaire ou sur LinkedIn.
-                            </p>
-                            <br>
-                            <p class="text-zinc-300 text-[20px] font-light max-w-sm leading-relaxed">
-                                07 66 23 27 15
-                                <br>
-                                hugo.davy@etudiant.univ-rennes.fr
-                            </p>
-                        </div>
 
-                        <div class="mt-12 gap-6 flex">
-                            <a href="https://www.linkedin.com/in/hugo-davy-0a57a73b4/" target="_blank"
-                                class="inline-flex items-center gap-4 group">
-                                <span
-                                    class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">LinkedIn</span>
-                                <div
-                                    class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
-                                </div>
 
-                            </a>
-                            <a href="https://github.com/hgddev" target="_blank"
-                                class="inline-flex items-center gap-4 group">
-                                <span
-                                    class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">GitHub</span>
-                                <div
-                                    class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
-                                </div>
-                            </a>
-                            <a href="https://iut-lannion.univ-rennes.fr/" target="_blank"
-                                class="inline-flex items-center gap-4 group">
-                                <span
-                                    class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">IUT
-                                    LANNION</span>
-                                <div
-                                    class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
-                                </div>
-                            </a>
+        <section class="w-full bg-transparent pt-32 overflow-hidden ">
 
-                        </div>
-
-                        <div class="mt-12 gap-6 flex">
-                            <a href="assets/PDF/annexe-2-licence-professionnelle-bachelor-universitaire-de-technologie-informatique-29016.pdf"
-                                download="Programme_national_BUT.pdf" target="_blank"
-                                class="relative overflow-hidden px-5 py-2 text-xs font-black text-white bg-blue-600/20 border border-blue-500/50 rounded-xl hover:bg-blue-600 hover:border-blue-400 ">
-                                <span>Programme National BUT</span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="lg:w-[60%] p-10 md:p-20 bg-white/[0.01]">
-                        <form action="https://formspree.io/f/maqkvjnb" method="POST"
-                            class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-
-                            <div class="flex flex-col gap-3">
-                                <label class="text-[8px] font-black text-zinc-600 tracking-[0.4em]">01. NOM</label>
-                                <input type="text" name="name" placeholder="VOTRE NOM" required
-                                    class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest placeholder:text-zinc-700">
-                            </div>
-
-                            <div class="flex flex-col gap-3">
-                                <label class="text-[8px] font-black text-zinc-600 tracking-[0.4em]">02.
-                                    EMAIL</label>
-                                <input type="email" name="email" placeholder="VOTRE@EMAIL.COM" required
-                                    class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest placeholder:text-zinc-700">
-                            </div>
-
-                            <div class="flex flex-col gap-3 md:col-span-2">
-                                <label class="text-[8px] font-black text-zinc-600 tracking-[0.4em]">03.
-                                    MESSAGE</label>
-                                <textarea name="message" placeholder="VOTRE MESSAGE ICI..." rows="3" required
-                                    class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest resize-none placeholder:text-zinc-700"></textarea>
-                            </div>
-
-                            <div class="md:col-span-2 pt-6">
-                                <button type="submit" class="group flex items-center gap-6">
-                                    <div
-                                        class="h-14 w-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </div>
-                                    <span
-                                        class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400 group-hover:text-white transition-colors">
-                                        Envoyer le message
-                                    </span>
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
+            <div class="w-full relative overflow-hidden">
 
                 <div
-                    class="border-t border-white/5 py-8 px-10 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.6em] text-blue-500">
-                    <p>PORTFOLIO // BUT INFORMATIQUE LANNION</p>
-                    <p>© HUGO DAVY TOUS DROITS RÉSERVÉS</p>
+                    class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0c0c0e] to-transparent z-10 pointer-events-none opacity-40">
+                </div>
+                <div
+                    class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0c0c0e] to-transparent z-10 pointer-events-none opacity-40">
+                </div>
+
+                <div class="flex w-max gap-6 animate-marquee">
+
+                    <div class="flex gap-6 shrink-0">
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/IMG_CHAINE_TRAITEMENT_FICHIERS.png" alt="Projet 1"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/FOND_SOKOBAN.png" alt="Projet 2" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/FOND_BDD.png" alt="Projet 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 shrink-0" aria-hidden="true">
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/SOKOBAN_grille_de_jeu.png" alt="Projet 1"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/IMG_PICROSS.png" alt="Projet 2" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="w-[45vw] md:w-[60vw] lg:w-[50vw] aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-xl">
+                            <img src="assets/img/IMG_SITE_WEB.png" alt="Projet 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </footer>
+        </section>
     </main>
 
+
+
+
+    <footer id="contact" class="relative z-20 mt-40 border-t border-white/5 bg-blue-600/20 backdrop-blur-md">
+        <div class="w-full">
+            <div class="max-w-[1800px] mx-auto flex flex-col lg:flex-row items-stretch">
+
+                <div
+                    class="lg:w-[40%] p-10 md:p-20 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-between">
+                    <div>
+
+                        <h2 class="text-4xl text-[40px] font-light italic mt-6 mb-8 text-white leading-tight">
+                            C'est malheuresement la FIN...</span>
+                        </h2>
+                        <p class="text-white text-[18px] font-light max-w-sm leading-relaxed">
+                            Merci d'avoir parcouru mon travail. Si mon profil correspond
+                            à vos besoins, n'hésitez pas à me contacter via ce formulaire ou sur LinkedIn.
+                        </p>
+                        <br><br><br>
+                        <p class="text-white text-[20px] font-light max-w-sm leading-relaxed">
+                            07 66 23 27 15
+                            <br>
+                            hugo.davy@etudiant.univ-rennes.fr
+                        </p>
+                    </div>
+
+                    <div class="mt-12 gap-6 flex">
+                        <a href="https://www.linkedin.com/in/hugo-davy-0a57a73b4/" target="_blank"
+                            class="inline-flex items-center gap-4 group">
+                            <span
+                                class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">LinkedIn</span>
+                            <div
+                                class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
+                            </div>
+
+                        </a>
+                        <a href="https://github.com/hgddev" target="_blank"
+                            class="inline-flex items-center gap-4 group">
+                            <span
+                                class="text-[15px] font-bold uppercase tracking-[0.3em] text-zinc-300 group-hover:text-blue-400 transition-colors">GitHub</span>
+                            <div
+                                class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-blue-500 transition-all">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-[60%] p-10 md:p-20 bg-white/[0.01]">
+                    <form action="https://formspree.io/f/maqkvjnb" method="POST"
+                        class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[10px] font-black text-zinc-300 tracking-[0.4em]">01. NOM</label>
+                            <input type="text" name="name" placeholder="VOTRE NOM" required
+                                class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest placeholder:text-zinc-700">
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[10px] font-black text-zinc-300 tracking-[0.4em]">02.
+                                EMAIL</label>
+                            <input type="email" name="email" placeholder="VOTRE@EMAIL.COM" required
+                                class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest placeholder:text-zinc-700">
+                        </div>
+
+                        <div class="flex flex-col gap-3 md:col-span-2">
+                            <label class="text-[10px] font-black text-zinc-300 tracking-[0.4em]">03.
+                                MESSAGE</label>
+                            <textarea name="message" placeholder="VOTRE MESSAGE ICI..." rows="3" required
+                                class="select-text bg-transparent border-b border-white/10 py-4 outline-none focus:border-blue-500 transition-all text-xs font-bold uppercase tracking-widest resize-none placeholder:text-zinc-700"></textarea>
+                        </div>
+
+                        <div class="md:col-span-2 pt-6">
+                            <button type="submit" class="group flex items-center gap-6">
+                                <div
+                                    class="h-14 w-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-white">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-300 group-hover:text-white transition-colors">
+                                    Envoyer le message
+                                </span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/5 py-8 px-10 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.6em] text-blue-500">
+                <p>PORTFOLIO // BUT INFORMATIQUE LANNION</p>
+                <p>© HUGO DAVY TOUS DROITS RÉSERVÉS</p>
+            </div>
+        </div>
+    </footer>
     <script>
         const titleSpans = document.querySelectorAll('.blur-layer');
         const centralGlow = document.getElementById('central-glow');
@@ -1278,6 +1318,96 @@
         });
 
 
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById('carousel-track');
+            const items = document.querySelectorAll('.carousel-item');
+            const btnPrev = document.getElementById('prev-competence');
+            const btnNext = document.getElementById('next-competence');
+
+            let currentIndex = 0;
+            let autoPlayInterval;
+
+            // Évalue la quantité de cartes affichées selon les breakpoints Tailwind
+            function getVisibleCardsCount() {
+                if (window.innerWidth >= 1024) return 3; // Écrans larges
+                if (window.innerWidth >= 768) return 2;  // Tablettes
+                return 1;                                // Mobile
+            }
+
+            // Calcule le décalage CSS exact en pixels
+            function updateCarousel() {
+                const visibleCards = getVisibleCardsCount();
+                const maxIndex = items.length - visibleCards;
+
+                // Verrous de sécurité
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                if (currentIndex < 0) currentIndex = 0;
+
+                const itemWidth = items[0].getBoundingClientRect().width;
+                const gap = 24; // Équivalent au gap-6 de Tailwind (24px)
+
+                const moveAmount = currentIndex * (itemWidth + gap);
+                track.style.transform = `translateX(-${moveAmount}px)`;
+
+                // Esthétique des flèches si on arrive au bout du train de cartes
+                btnPrev.style.opacity = currentIndex === 0 ? "0.2" : "";
+                btnPrev.style.pointerEvents = currentIndex === 0 ? "none" : "";
+
+                btnNext.style.opacity = currentIndex === maxIndex ? "0.2" : "";
+                btnNext.style.pointerEvents = currentIndex === maxIndex ? "none" : "";
+            }
+
+            function nextSlide() {
+                const visibleCards = getVisibleCardsCount();
+                const maxIndex = items.length - visibleCards;
+
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Boucle et repart à zéro
+                }
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = items.length - getVisibleCardsCount(); // Va à la fin
+                }
+                updateCarousel();
+            }
+
+            // Clics manuels
+            btnNext.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+            btnPrev.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+
+            // Fonctions de l'Autoplay
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 3500); // Défilement toutes les 3.5 sec
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
+            function resetAutoPlay() {
+                stopAutoPlay();
+                startAutoPlay();
+            }
+
+            // Empêche le carrousel de bouger si l'utilisateur met sa souris dessus pour regarder les projets
+            const carouselArea = track.closest('.group\\/carousel');
+            carouselArea.addEventListener('mouseenter', stopAutoPlay);
+            carouselArea.addEventListener('mouseleave', startAutoPlay);
+
+            // Recalcule tout dynamiquement si l'utilisateur change la taille du navigateur
+            window.addEventListener('resize', updateCarousel);
+
+            // Initialisation au chargement de la page
+            updateCarousel();
+            startAutoPlay();
+        });
     </script>
 </body>
 
